@@ -1,0 +1,22 @@
+name: "Nightly firmware build"
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '26 6 * * *'
+
+jobs:
+  nightly_build:
+    runs-on: ubuntu-latest
+    name: Build firmware
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Build in docker container
+        uses: ./.github/actions/
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: precompiled-firmware-files
+          path: |
+            qmk_firmware/nullbitsco_*.hex
