@@ -1,0 +1,41 @@
+name: "Nightly firmware build"
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '11 6 * * *'
+
+jobs:
+  nightly_build:
+    runs-on: ubuntu-latest
+    name: Build firmware
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Build in docker container
+        uses: ./.github/actions/
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: precompiled-firmware-files
+          path: |
+            qmk_firmware/nullbitsco_*.hex
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%m/%d/%Y')"
+      - name: Generate release text
+        id: release_text
+        run: >
+          echo "::set-output name=release_text::$(echo 'Nightly build outputs for nullbits keyboards.
+          These files are always the most up-to-date but may contain unfixed bugs or other unreported issues!
+          **It is highly recommended that you flash one of the [official releases](https://github.com/nullbitsco/firmware/releases/tag/latest) instead.**')"
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "qmk_firmware/nullbitsco_*.hex"
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          body: ${{ steps.release_text.outputs.release_text }}
+          tag: "nightly"
+          name: "Nightly Build ${{ steps.date.outputs.date }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
