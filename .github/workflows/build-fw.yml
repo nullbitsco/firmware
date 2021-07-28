@@ -3,7 +3,7 @@ name: "Nightly firmware build"
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '17 5 * * *'
+    - cron:  '36 5 * * *'
 
 jobs:
   nightly_build:
@@ -27,9 +27,8 @@ jobs:
         id: release_text
         run: >
           echo "::set-output name=release_text::$(echo 'Nightly build outputs for nullbits keyboards.
-          These files are always the most up-to-date but may contain unfixed bugsor other unreported issues.
-          It's highly recommended that you flash one of the 
-          [official releases](https://github.com/nullbitsco/firmware/releases/tag/latest) instead.')"
+          These files are always the most up-to-date but may contain unfixed bugs or other unreported issues.
+          It's highly recommended that you flash one of the [official releases](https://github.com/nullbitsco/firmware/releases/tag/latest) instead.')"
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
