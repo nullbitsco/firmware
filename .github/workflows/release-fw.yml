@@ -16,6 +16,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
       - name: Build in docker container
+        id: docker_build
         uses: ./.github/actions/
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
@@ -29,9 +30,11 @@ jobs:
       - name: Generate release text
         id: release_text
         run: >
-          echo "::set-output name=release_text::$(echo 'Precompiled firmware files for nullbits keyboards.
+          echo "::set-output name=release_text::$(echo '<b>Precompiled firmware files for nullbits keyboards</b><br><br>
           Download a firmware file by expanding "Assets", right clicking, and choosing "Save File As" or "Save Link As".
-          <br/>${{ github.event.inputs.releaseBody }}<br/>Released on ${{ steps.date.outputs.date }}.')"
+          <br>${{ github.event.inputs.releaseBody }}
+          <br>Released on ${{ steps.date.outputs.date }}.
+          <br><br>${{ steps.docker_build.outputs.commits }}')"
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
