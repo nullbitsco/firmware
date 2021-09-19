@@ -6,6 +6,6 @@ For use with [QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases). Follow 
 
 ### Looking for the source code instead?
 For those who want to compile along at home.  
-[NIBBLE](https://github.com/jaygreco/qmk_firmware/tree/master/keyboards/nullbitsco/nibble)  
+[NIBBLE](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/nibble)  
 [TIDBIT](https://github.com/nullbitsco/tidbit)  
-[SCRAMBLE](https://github.com/jaygreco/qmk_firmware/tree/master/keyboards/nullbitsco/scramble)
+[SCRAMBLE](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/scramble)
