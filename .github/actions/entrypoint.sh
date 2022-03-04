@@ -22,11 +22,17 @@ append_githash_info
 
 cd keyboards/nullbitsco
 git submodule add https://github.com/nullbitsco/tidbit tidbit
+git submodule add https://github.com/nullbitsco/snap snap
+
+cd snap
+append_githash_info
+cd ../
 
 cd tidbit
 append_githash_info
-echo "::set-output name=commits::$GITHASH_STR"
 cd ../
+
+echo "::set-output name=commits::$GITHASH_STR"
 
 cd ../../
 

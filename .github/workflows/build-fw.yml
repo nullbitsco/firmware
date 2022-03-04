@@ -3,7 +3,7 @@ name: "Nightly firmware build"
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '11 6 * * *'
+    - cron:  '28 7 * * *'
 
 jobs:
   nightly_build:
@@ -13,6 +13,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
       - name: Build in docker container
+        id: docker_build
         uses: ./.github/actions/
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
@@ -28,7 +29,8 @@ jobs:
         run: >
           echo "::set-output name=release_text::$(echo 'Nightly build outputs for nullbits keyboards.
           These files are always the most up-to-date but may contain unfixed bugs or other unreported issues!
-          **It is highly recommended that you flash one of the [official releases](https://github.com/nullbitsco/firmware/releases/tag/latest) instead.**')"
+          **It is highly recommended that you flash one of the [official releases](https://github.com/nullbitsco/firmware/releases/tag/latest) instead.**
+          <br><br>${{ steps.docker_build.outputs.commits }}')"
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
