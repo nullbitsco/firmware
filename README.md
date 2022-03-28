@@ -8,5 +8,5 @@ For use with [QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases). Follow 
 For those who want to compile along at home.  
 [SNAP](https://github.com/nullbitsco/snap)  
 [NIBBLE](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/nibble)  
-[TIDBIT](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/tidbit)  
+[TIDBIT](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/tidbit) [+Extras](https://github.com/nullbitsco/tidbit)  
 [SCRAMBLE](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/scramble)

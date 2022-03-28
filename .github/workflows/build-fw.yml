@@ -3,7 +3,12 @@ name: "Nightly firmware build"
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '28 7 * * *'
+    - cron:  '11 6 * * *'
+  workflow_dispatch:
+    inputs:
+      releaseBody:
+        description: 'Additional release text'
+        default: ""
 
 jobs:
   nightly_build:
