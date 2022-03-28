@@ -21,14 +21,16 @@ git checkout --
 append_githash_info
 
 cd keyboards/nullbitsco
-git submodule add https://github.com/nullbitsco/tidbit tidbit
-git submodule add https://github.com/nullbitsco/snap snap
+git submodule add https://github.com/nullbitsco/tidbit tidbit_extras
+ln -s $(realpath .)/tidbit_extras/keymaps/* tidbit/keymaps
 
-cd snap
+cd tidbit_extras
 append_githash_info
 cd ../
 
-cd tidbit
+git submodule add https://github.com/nullbitsco/snap snap
+
+cd snap
 append_githash_info
 cd ../
 
