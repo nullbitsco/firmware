@@ -26,6 +26,7 @@ jobs:
           name: precompiled-firmware-files
           path: |
             qmk_firmware/nullbitsco_*.hex
+            qmk_firmware/nullbitsco_*.uf2
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%m/%d/%Y')"
@@ -36,13 +37,25 @@ jobs:
           These files are always the most up-to-date but may contain unfixed bugs or other unreported issues!
           **It is highly recommended that you flash one of the [official releases](https://github.com/nullbitsco/firmware/releases/tag/latest) instead.**
           <br><br>${{ steps.docker_build.outputs.commits }}')"
-      - name: Create release
+      - name: Create release (AVR)
         uses: ncipollo/release-action@v1
         with:
           artifacts: "qmk_firmware/nullbitsco_*.hex"
           allowUpdates: true
           artifactErrorsFailBuild: true
           body: ${{ steps.release_text.outputs.release_text }}
-          tag: "nightly"
-          name: "Nightly Build ${{ steps.date.outputs.date }}"
+          tag: "nightly-avr"
+          name: "Nightly AVR Build ${{ steps.date.outputs.date }}"
           token: ${{ secrets.GITHUB_TOKEN }}
+          removeArtifacts: true
+      - name: Create release (RP2040)
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "qmk_firmware/nullbitsco_*.uf2"
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          body: ${{ steps.release_text.outputs.release_text }}
+          tag: "nightly-rp2040"
+          name: "Nightly RP2040 Build ${{ steps.date.outputs.date }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          removeArtifacts: true
