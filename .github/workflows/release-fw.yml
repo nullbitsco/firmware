@@ -7,7 +7,6 @@ on:
         description: 'Additional release text'
         default: ""
 
-#TODO: split jobs!
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -45,3 +44,5 @@ jobs:
           tag: "latest"
           name: "Precompiled Firmware Files"
           token: ${{ secrets.GITHUB_TOKEN }}
+          removeArtifacts: true
+          makeLatest: true
