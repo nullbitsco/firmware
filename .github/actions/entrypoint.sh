@@ -38,7 +38,7 @@ cd ../
 qmk setup -y
 
 # Compile for AVR
-for t in nibble tidbit scramble snap;
+for t in nibble tidbit scramble/v1 snap;
     do echo "Building QMK for $t";
     qmk compile -j 2 -kb nullbitsco/$t -km all
 done
