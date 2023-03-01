@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/sh -le
 
 GITHASH_STR="<b>Commits used to build this release:</b><br>"
 
@@ -47,6 +47,7 @@ done
 git config advice.detachedHead false
 git remote add nullbits https://github.com/jaygreco/qmk_firmware.git
 git fetch nullbits --depth=1 2> /dev/null
+git stash
 git checkout nullbits/rp2040_clean
 
 append_githash_info "qmk_firmware rp2040"
@@ -67,7 +68,8 @@ for t in nibble/rp2040 tidbit/rp2040 scramble/v2 snap/rp2040;
     qmk compile -j 2 -kb nullbitsco/$t -km all
 done
 
-echo "commits=$GITHASH_STR" >> "$GITHUB_OUTPUT"
+echo "commits=$GITHASH_STR" >> "$GITHUB_OUTPUT" || true
 
+# If we made it this far without any hex or uf2 files, there's a problem
 ls *.hex
 ls *.uf2
