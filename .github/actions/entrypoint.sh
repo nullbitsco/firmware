@@ -29,12 +29,6 @@ cd tidbit_extras || exit 1
 append_githash_info
 cd ../
 
-# Add snap repo
-git submodule add https://github.com/nullbitsco/snap snap
-cd snap || exit 1
-append_githash_info
-cd ../
-
 qmk setup -y
 
 # Compile for AVR
@@ -55,12 +49,6 @@ append_githash_info "qmk_firmware rp2040"
 # Update submodules after repo switch, but before checking out rp2040 SNAP
 cd ../../
 make git-submodule
-
-# Checkout nullbits rp2040 snap repo
-cd keyboards/nullbitsco/snap || exit 1
-git checkout rp2040_clean
-append_githash_info "snap rp2040"
-cd ../../../
 
 # Compile for RP2040
 for t in nibble/rp2040 tidbit/rp2040 scramble/v2 snap/rp2040;

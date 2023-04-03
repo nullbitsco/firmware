@@ -6,7 +6,7 @@ For use with [QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases). Follow 
 
 ### Looking for the source code instead?
 For those who want to compile along at home.  
-[SNAP](https://github.com/nullbitsco/snap) [+RP2040](https://github.com/nullbitsco/snap/tree/rp2040_clean)  
+[SNAP](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/snap) [+RP2040](https://github.com/jaygreco/qmk_firmware/tree/rp2040_clean/keyboards/nullbitsco/snap)  
 [NIBBLE](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/nibble) [+RP2040](https://github.com/jaygreco/qmk_firmware/tree/rp2040_clean/keyboards/nullbitsco/nibble)  
 [TIDBIT](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/tidbit) [+Extras](https://github.com/nullbitsco/tidbit) [+RP2040](https://github.com/jaygreco/qmk_firmware/tree/rp2040_clean/keyboards/nullbitsco/tidbit)  
-[SCRAMBLE](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/scramble) [+RP2040](https://github.com/jaygreco/qmk_firmware/tree/rp2040_clean/keyboards/nullbitsco/scramble)
+[SCRAMBLE](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/scramble/v1) [+RP2040](https://github.com/qmk/qmk_firmware/tree/master/keyboards/nullbitsco/scramble/v2)
