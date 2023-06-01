@@ -31,8 +31,8 @@ cd ../
 
 qmk setup -y
 
-# Compile for AVR
-for t in nibble tidbit scramble/v1 snap;
+# Compile upstream boards first
+for t in nibble tidbit scramble/v1 scramble/v2 snap;
     do echo "Building QMK for $t";
     qmk compile -j 2 -kb nullbitsco/$t -km all
 done
@@ -51,7 +51,7 @@ cd ../../
 make git-submodule
 
 # Compile for RP2040
-for t in nibble/rp2040 tidbit/rp2040 scramble/v2 snap/rp2040;
+for t in nibble/rp2040 tidbit/rp2040 snap/rp2040;
     do echo "Building QMK for $t";
     qmk compile -j 2 -kb nullbitsco/$t -km all
 done
