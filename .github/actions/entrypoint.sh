@@ -29,12 +29,19 @@ cd tidbit_extras || exit 1
 append_githash_info
 cd ../
 
+# Add holly repo
+git submodule add https://github.com/nullbitsco/holly holly
+
+cd holly || exit 1
+append_githash_info
+cd ../
+
 qmk setup -y
 
 # Compile upstream boards first
-for t in nibble tidbit scramble/v1 scramble/v2 snap;
+for t in nibble tidbit scramble/v1 scramble/v2 snap holly;
     do echo "Building QMK for $t";
-    qmk compile -j 2 -kb nullbitsco/$t -km all
+    qmk compile -j "$(nproc)" -kb nullbitsco/$t -km all
 done
 
 # Checkout nullbits rp2040 repo
@@ -53,7 +60,7 @@ make git-submodule
 # Compile for RP2040
 for t in nibble/rp2040 tidbit/rp2040 snap/rp2040;
     do echo "Building QMK for $t";
-    qmk compile -j 2 -kb nullbitsco/$t -km all
+    qmk compile -j "$(nproc)" -kb nullbitsco/$t -km all
 done
 
 echo "commits=$GITHASH_STR" >> "$GITHUB_OUTPUT" || true
