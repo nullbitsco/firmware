@@ -39,10 +39,10 @@ cd ../
 qmk setup -y
 
 # Compile upstream boards first
-for t in nibble tidbit scramble/v1 scramble/v2 snap holly;
-    do echo "Building QMK for $t";
-    qmk compile -j "$(nproc)" -kb nullbitsco/$t -km all
-done
+qmk mass-compile -j "$(nproc)" \
+    nullbitsco/nibble:all nullbitsco/tidbit:all \
+    nullbitsco/scramble/v1:all nullbitsco/scramble/v2:all \
+    nullbitsco/snap:all nullbitsco/holly:all
 
 # Checkout nullbits rp2040 repo
 git config advice.detachedHead false
