@@ -2,7 +2,7 @@
 [![Nightly firmware build](https://github.com/nullbitsco/firmware/actions/workflows/build-fw.yml/badge.svg)](https://github.com/nullbitsco/firmware/actions/workflows/build-fw.yml)
 
 For use with [QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases). Follow the flashing guide [here](https://github.com/nullbitsco/docs/blob/main/firmware/firmware_flashing.md).
-# [Download link](https://github.com/nullbitsco/firmware/releases/tag/latest) or [RP2040/Bit-C PRO](https://github.com/nullbitsco/firmware/releases/tag/nightly-rp2040)
+# [Download link](https://github.com/nullbitsco/firmware/releases/tag/latest) or [RP2040/Bit-C PRO](https://github.com/nullbitsco/firmware/releases/tag/latest-rp2040)
 
 ### Looking for the source code instead?
 For those who want to compile along at home.  
