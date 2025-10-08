@@ -36,13 +36,20 @@ cd holly || exit 1
 append_githash_info
 cd ../
 
+# Set up QMK
 qmk setup -y
+
+# Add VIA userspace (must be done after QMK setup)
+cd / || exit 1
+git clone https://github.com/the-via/qmk_userspace_via
+qmk config user.overlay_dir="$(realpath qmk_userspace_via)"
+cd -
 
 # Compile upstream boards first
 qmk mass-compile -j "$(nproc)" \
     nullbitsco/nibble:all nullbitsco/tidbit:all \
     nullbitsco/scramble/v1:all nullbitsco/scramble/v2:all \
-    nullbitsco/snap:all nullbitsco/holly:all
+    nullbitsco/snap:all nullbitsco/holly:via
 
 # Checkout nullbits rp2040 repo
 git config advice.detachedHead false

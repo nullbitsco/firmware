@@ -16,12 +16,12 @@ jobs:
     name: Build firmware
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build in docker container
         id: docker_build
         uses: ./.github/actions/
       - name: Archive artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: precompiled-firmware-files
           path: |
